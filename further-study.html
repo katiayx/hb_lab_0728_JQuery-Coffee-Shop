@@ -42,7 +42,7 @@
         <h4>Total: <span id="revenue"><!-- Revenue Message will show up here --></span></h4>
     </div>
 </div>
-
+<script src='https://code.jquery.com/jquery.js'></script>
 <script>
 
     var myImage = document.getElementById("coffee_image");
@@ -50,8 +50,8 @@
 
     var drinksOrdered = [];
 
-    myImage.src = "static/coffee_beans.jpg";
-    myImage.addEventListener('click', function () { return makeCoffee("brew"); });
+    $('#coffee_image').attr('src', 'static/coffee_beans.jpg');
+    $('#coffee_image').click(makeCoffee);
 
     // Append the drink_type to drinks_ordered and use console.log to view the output
 
@@ -62,9 +62,10 @@
         var myRevenue = revenue();
         myRevenueMessage.innerHTML = "Today's revenues: " + myRevenue;
 
-        myImage.setAttribute('src', "static/coffee_machine.jpg");
-        setTimeout(function () { myImage.setAttribute('src', "static/coffee_mug.jpg"); }, 500);
-        setTimeout(function () { myImage.setAttribute('src', "static/coffee_beans.jpg"); }, 1500);
+        $('#coffee_image').attr('src', 'static/coffee_machine.jpg');
+        setTimeout(function () { $('#coffee_image').attr('src', 'static/coffee_mug.jpg'); }, 500);
+        setTimeout(function () { $('#coffee_image').attr('src', 'static/coffee_beans.jpg'); }, 1500);
+
     }
 
 
@@ -74,9 +75,9 @@
     var latte = document.getElementById("latte");
     var hotChocolate = document.getElementById("hot-chocolate");
 
-    espresso.addEventListener('click', function () { return makeCoffee("espresso"); });
-    latte.addEventListener('click', function () { return makeCoffee("latte"); });
-    hotChocolate.addEventListener('click', function () { return makeCoffee("hot chocolate"); });
+    $('#espresso').click(function () { return makeCoffee("espresso"); });
+    $('#latte').click(function () { return makeCoffee("latte"); });
+    $('#hot-chocolate').click(function () { return makeCoffee("hot chocolate"); });
 
     // Use this dictionary to calculate profits for the day and log them to the console.
 
